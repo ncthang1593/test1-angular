@@ -1,0 +1,23 @@
+<form action="" class="form" autocomplete="off" #myForm="ngForm">
+  <mat-form-field appearance="legacy">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Email here" name="email" id="email" ngModel #email="ngModel" minlength="6" email required (ngModelChange)="handleChangeInput($event, myForm)">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+  <mat-form-field appearance="legacy">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" placeholder="" name="password" ngModel #password="ngModel" [ngModelOptions]="{standalone: false}">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+
+  <div>
+    <button mat-raised-button color="primary" (click)="onSubmit(myForm, email)"
+      (click)="onClick($event)">Submit</button>
+  </div>
+  {{ email.value | json }}
+  <br>
+  {{ email.errors | json }}
+
+  <div>
+  </div>
+</form>

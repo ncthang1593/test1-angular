@@ -1,0 +1,26 @@
+<form action="" [formGroup]="form" (ngSubmit)="submitForm()">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Input</mat-label>
+    <input matInput formControlName="title" autocomplete="off">
+  </mat-form-field>
+
+  <div formArrayName="lists">
+    <mat-form-field appearance="fill" *ngFor="let val of lists.controls, let i = index">
+      <mat-label>Input</mat-label>
+      <input matInput autocomplete="off" [formControlName]="i">
+      <button mat-raised-button color="primary" (click)="remove(i)">Remove</button>
+    </mat-form-field>
+
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Select</mat-label>
+      <mat-select>
+        <mat-option value="one">First option</mat-option>
+        <mat-option value="two">Second option</mat-option>
+      </mat-select>
+    </mat-form-field> -->
+  </div>
+
+  <button mat-raised-button color="primary" (click)="addList()">Add</button>
+
+</form>

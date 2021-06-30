@@ -1,0 +1,61 @@
+<input type="text" #input>
+{{ observable$ | async }}
+
+<hr>
+
+<!-- Template-driven form -->
+<!-- <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" autocomplete="off">
+  <p>Template-driven form</p>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" name="email" ngModel #email>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" name="password" appPasswordStrength ngModel>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form> -->
+
+<hr>
+
+<!-- Reactive form -->
+<form autocomplete="off" [formGroup]="reactiveForm" (ngSubmit)="onSubmitReactive()">
+  <p>Reactive form</p>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" formControlName="email" (change)="valueChange()">
+    <div *ngIf="reactiveForm.controls.email.errors">
+      required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" formControlName="password">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+<form action="" [formGroup]="selectForm" (ngSubmit)="submitSelect(selectForm)">
+  <h4>Basic mat-select</h4>
+  <mat-form-field appearance="fill">
+    <mat-label>Input</mat-label>
+    <input formControlName="test" matInput appPasswordStrength>
+    <p>{{ 10 | testPipe:[1,2,3] }}</p>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Favorite food</mat-label>
+    <mat-select formControlName="food">
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
+    <mat-error >Please provide a valid Fromdate</mat-error>
+  </mat-form-field>
+  <button>submit</button>
+</form>

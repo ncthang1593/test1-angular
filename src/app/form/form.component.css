@@ -1,0 +1,9 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+}
+.form mat-form-field {
+  margin-bottom: 20px;
+  margin-left: 20px;
+}

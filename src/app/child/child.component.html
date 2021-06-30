@@ -1,0 +1,22 @@
+<hr>
+<p [ngClass]="isBlue ? 'blue' : '' " #p>child works!</p>
+<button (click)="isBlue = !isBlue">Change Color</button>
+<br>
+<input type="text" (keyup.enter)="onChange($event)" #input>
+
+<hr>
+<ng-container *ngIf="isTrue; else myTemplate">
+  <p>true</p>
+</ng-container>
+
+<ng-template #myTemplate>
+  <p>
+    hello abc
+  </p>
+</ng-template>
+<hr>
+<button (click)="isTrue = !isTrue">Click</button>
+
+<div *ngTemplateOutlet="myTemplate">
+
+</div>

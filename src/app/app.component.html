@@ -1,0 +1,17 @@
+<!-- <app-test></app-test> -->
+<!-- <app-form></app-form> -->
+<!-- <app-reactive-form></app-reactive-form> -->
+
+<p>
+  {{title}}
+</p>
+<input type="text">
+<app-child (titleChanged)="onChange($event)">
+  <p #p>
+    hello content child
+  </p>
+  <p #p>
+    hello content child 2
+  </p>
+  <app-child2 #child>dasd</app-child2>
+</app-child>
